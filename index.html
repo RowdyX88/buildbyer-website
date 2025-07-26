@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERIC CONSTRUCTION | Heavy Duty Builders Since 1984</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap');
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f5f3f0;
+            color: #222;
+        }
+        
+        .logo {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #c67b3a;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #c67b3a, #8a5a44, #c67b3a);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        .vhs-effect {
+            position: relative;
+        }
+        
+        .vhs-effect::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.03) 100%);
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        .vhs-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.1) 0px, rgba(0,0,0,0.1) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 10;
+            mix-blend-mode: overlay;
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 8px rgba(255,255,255,0.3);
+        }
+        
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scanline::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            animation: scan 8s linear infinite;
+            z-index: 10;
+        }
+        
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        
+        .neon-border {
+            position: relative;
+        }
+        
+        .neon-border::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1px solid transparent;
+            background: linear-gradient(90deg, #f8f5f2, #c5b6a8, #f8f5f2) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .page-transition {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="vhs-effect">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-black bg-opacity-90 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="logo">ERIC</div>
+                <div class="ml-4 text-xs text-gray-400 mono hidden md:block">// HEAVY DUTY CONSTRUCTION SINCE 1984</div>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('home')">HOME</a>
+                <a href="#about" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('about')">ABOUT</a>
+                <a href="#mission" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('mission')">OUR MISSION</a>
+                <a href="#stories" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('stories')">STORIES</a>
+                <a href="#contact" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('contact')">CONTACT</a>
+            </div>
+            
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black bg-opacity-95 py-4 px-6" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('home')">HOME</a>
+                <a href="#about" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('about')">ABOUT</a>
+                <a href="#mission" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('mission')">OUR MISSION</a>
+                <a href="#stories" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('stories')">STORIES</a>
+                <a href="#contact" class="text-white hover:text-amber-300 transition-colors mono text-sm tracking-wider" onclick="showPage('contact')">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="pt-24 pb-16">
+        <!-- Home Page -->
+        <div id="home-page" class="page-transition">
+            <div class="container mx-auto px-6">
+                <!-- Hero Section -->
+                <section class="py-20 md:py-32 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-40 z-0"></div>
+                    <div class="relative z-10 text-center">
+                        <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 glow-text">ERIC CONSTRUCTION</h1>
+                        <p class="text-xl md:text-2xl text-amber-200 mb-10 mono max-w-3xl mx-auto">// INDUSTRIAL-STRENGTH BUILDING SOLUTIONS SINCE 1984</p>
+                        <div class="flex justify-center space-x-4">
+                            <button class="bg-transparent border border-white text-white px-8 py-3 hover:bg-white hover:text-black transition-all mono text-sm tracking-wider" onclick="showPage('contact')">REQUEST CONSULTATION</button>
+                            <button class="bg-amber-500 border border-amber-500 text-black px-8 py-3 hover:bg-transparent hover:text-amber-500 transition-all mono text-sm tracking-wider" onclick="showPage('about')">LEARN MORE</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Construction Calculator -->
+                <section class="py-20 bg-white shadow-lg rounded-lg mx-4 md:mx-0">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-4">Project Calculator</h2>
+                            <div class="w-24 h-1 bg-amber-600 mx-auto"></div>
+                        </div>
+                        
+                        <div class="max-w-2xl mx-auto bg-gray-100 p-8 rounded-lg">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Project Type</label>
+                                    <select class="w-full px-4 py-2 border border-gray-300 rounded">
+                                        <option>Residential</option>
+                                        <option>Commercial</option>
+                                        <option>Industrial</option>
+                                        <option>Renovation</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Square Meters</label>
+                                    <input type="number" class="w-full px-4 py-2 border border-gray-300 rounded" placeholder="Enter area">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                                <div class="bg-amber-50 p-4 rounded text-center">
+                                    <div class="text-amber-600 font-bold text-xl">$85-120</div>
+                                    <div class="text-gray-600 text-sm">per m² (Basic)</div>
+                                </div>
+                                <div class="bg-amber-100 p-4 rounded text-center">
+                                    <div class="text-amber-800 font-bold text-xl">$120-180</div>
+                                    <div class="text-gray-600 text-sm">per m² (Standard)</div>
+                                </div>
+                                <div class="bg-amber-200 p-4 rounded text-center">
+                                    <div class="text-amber-900 font-bold text-xl">$180-250+</div>
+                                    <div class="text-gray-600 text-sm">per m² (Premium)</div>
+                                </div>
+                            </div>
+                            <button class="w-full bg-amber-600 text-white py-3 rounded hover:bg-amber-700 transition">Calculate Estimate</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section class="py-20">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Specializations</h2>
+                        <div class="w-24 h-1 bg-amber-500 mx-auto"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 shadow-lg relative neon-border">
+                            <div class="text-amber-600 text-4xl mb-4"><i class="fas fa-hammer"></i></div>
+                            <h3 class="text-xl font-bold mb-3">Heavy Construction</h3>
+                            <p class="text-gray-600">Industrial-grade building solutions with military-spec durability and precision engineering.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 shadow-lg relative neon-border">
+                            <div class="text-amber-600 text-4xl mb-4"><i class="fas fa-home"></i></div>
+                            <h3 class="text-xl font-bold mb-3">Residential Builds</h3>
+                            <p class="text-gray-600">Custom luxury homes built with the same rugged standards as our commercial projects.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 shadow-lg relative neon-border">
+                            <div class="text-amber-600 text-4xl mb-4"><i class="fas fa-tools"></i></div>
+                            <h3 class="text-xl font-bold mb-3">Renovations</h3>
+                            <p class="text-gray-600">Transforming existing structures with our signature industrial aesthetic and durability.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Project Gallery -->
+                <section class="py-20">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Work</h2>
+                        <div class="w-24 h-1 bg-amber-600 mx-auto"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                        <div class="h-64 bg-gray-800 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 class="text-xl font-bold">Industrial Complex</h3>
+                                <p class="text-amber-300 mono text-sm">2023 • 12,000m²</p>
+                            </div>
+                        </div>
+                        <div class="h-64 bg-gray-700 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 class="text-xl font-bold">Luxury Loft Conversion</h3>
+                                <p class="text-amber-300 mono text-sm">2022 • 850m²</p>
+                            </div>
+                        </div>
+                        <div class="h-64 bg-gray-600 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                            <div class="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 class="text-xl font-bold">Commercial Tower</h3>
+                                <p class="text-amber-300 mono text-sm">2021 • 25,000m²</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Client Testimonials -->
+                <section class="py-20 bg-black text-white relative scanline">
+                    <div class="absolute inset-0 opacity-5 bg-gradient-to-r from-amber-500 to-purple-600"></div>
+                    <div class="relative z-10">
+                        <div class="text-center mb-16">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-4 glow-text">Client Testimonials</h2>
+                            <div class="w-24 h-1 bg-amber-500 mx-auto"></div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                            <div class="bg-black bg-opacity-50 p-8 border-l-4 border-amber-500">
+                                <p class="italic mb-4">"Her Majesty's Hati handled our billion-dollar merger with absolute precision. Their team worked around the clock to ensure every detail was perfect."</p>
+                                <p class="mono text-sm text-amber-300">// CEO, FORTUNE 100 COMPANY</p>
+                            </div>
+                            
+                            <div class="bg-black bg-opacity-50 p-8 border-l-4 border-amber-500">
+                                <p class="italic mb-4">"When I needed discrete counsel during a sensitive personal matter, they provided not just legal expertise but genuine care and understanding."</p>
+                                <p class="mono text-sm text-amber-300">// HIGH-PROFILE PUBLIC FIGURE</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page-transition hidden">
+            <div class="container mx-auto px-6 py-20">
+                <div class="flex flex-col md:flex-row items-center mb-20">
+                    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Heritage</h1>
+                        <div class="w-24 h-1 bg-amber-500 mb-8"></div>
+                        <p class="text-lg mb-6">Founded in 1984 by Elizabeth Hati, Her Majesty's Hati began as a boutique firm specializing in corporate law during the golden age of Wall Street.</p>
+                        <p class="text-lg mb-6">What began as a three-person operation in a Manhattan brownstone has grown into one of the most respected legal practices worldwide, while maintaining our commitment to personalized service.</p>
+                        <p class="text-lg">Our name reflects both our founder's regal approach to the law and her Indonesian heritage ("Hati" meaning "heart" in Bahasa), representing the compassion at our core.</p>
+                    </div>
+                    <div class="md:w-1/2 relative">
+                        <div class="bg-gray-200 h-96 w-full relative neon-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                                <i class="fas fa-image fa-5x"></i>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-amber-500 text-black p-4 w-32 h-32 flex items-center justify-center mono text-sm text-center">EST. 1984</div>
+                    </div>
+                </div>
+                
+                <div class="py-20">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Partners</h2>
+                        <div class="w-24 h-1 bg-amber-500 mx-auto"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 shadow-lg text-center">
+                            <div class="bg-gray-200 h-48 w-48 mx-auto mb-6 rounded-full overflow-hidden">
+                                <div class="h-full w-full flex items-center justify-center text-gray-400">
+                                    <i class="fas fa-user fa-3x"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Elizabeth Hati</h3>
+                            <p class="text-amber-600 mono mb-4">// FOUNDING PARTNER</p>
+                            <p class="text-gray-600">Harvard Law '78. Former federal prosecutor. Specializes in high-stakes corporate litigation.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 shadow-lg text-center">
+                            <div class="bg-gray-200 h-48 w-48 mx-auto mb-6 rounded-full overflow-hidden">
+                                <div class="h-full w-full flex items-center justify-center text-gray-400">
+                                    <i class="fas fa-user fa-3x"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Jonathan Pierce</h3>
+                            <p class="text-amber-600 mono mb-4">// SENIOR PARTNER</p>
+                            <p class="text-gray-600">Yale Law '85. IP law pioneer. Has secured over 10,000 patents for clients worldwide.</p>
+                        </div>
+                        
+                        <div class="bg-white p-8 shadow-lg text-center">
+                            <div class="bg-gray-200 h-48 w-48 mx-auto mb-6 rounded-full overflow-hidden">
+                                <div class="h-full w-full flex items-center justify-center text-gray-400">
+                                    <i class="fas fa-user fa-3x"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Victoria Chen</h3>
+                            <p class="text-amber-600 mono mb-4">// PARTNER</p>
+                            <p class="text-gray-600">Stanford Law '92. Leads our discrete counsel division handling sensitive client matters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Page -->
+        <div id="mission-page" class="page-transition hidden">
+            <div class="container mx-auto px-6 py-20">
+                <div class="text-center mb-20">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Our Mission</h1>
+                    <div class="w-24 h-1 bg-amber-500 mx-auto mb-8"></div>
+                    <p class="text-xl max-w-3xl mx-auto">To provide unparalleled legal counsel that blends time-honored principles with innovative strategies, all while maintaining the utmost discretion for our clients.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+                    <div class="bg-white p-10 shadow-lg relative neon-border">
+                        <h2 class="text-2xl font-bold mb-6">Core Values</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 mono text-amber-600">// INTEGRITY</h3>
+                                <p>We adhere to the highest ethical standards in all our dealings, both in and out of the courtroom.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 mono text-amber-600">// EXCELLENCE</h3>
+                                <p>We pursue every case with meticulous attention to detail and uncompromising quality.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 mono text-amber-600">// DISCRETION</h3>
+                                <p>Client confidentiality is sacrosanct. What happens at Hati stays at Hati.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2 mono text-amber-600">// INNOVATION</h3>
+                                <p>We combine classic legal strategies with cutting-edge approaches to solve modern problems.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-black text-white p-10 relative scanline">
+                        <div class="absolute inset-0 opacity-10 bg-gradient-to-br from-amber-500 to-purple-600"></div>
+                        <div class="relative z-10">
+                            <h2 class="text-2xl font-bold mb-6 glow-text">Our Approach</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="text-amber-400 mr-4 mt-1"><i class="fas fa-chess-queen"></i></div>
+                                    <div>
+                                        <h3 class="text-lg font-bold mb-2">Strategic Thinking</h3>
+                                        <p class="text-gray-300">We approach each case like a grandmaster, anticipating moves several steps ahead.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-amber-400 mr-4 mt-1"><i class="fas fa-fingerprint"></i></div>
+                                    <div>
+                                        <h3 class="text-lg font-bold mb-2">Personalized Service</h3>
+                                        <p class="text-gray-300">Every client receives customized attention from our senior partners.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-amber-400 mr-4 mt-1"><i class="fas fa-bolt"></i></div>
+                                    <div>
+                                        <h3 class="text-lg font-bold mb-2">Relentless Advocacy</h3>
+                                        <p class="text-gray-300">We fight tirelessly for our clients' interests with precision and passion.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="text-amber-400 mr-4 mt-1"><i class="fas fa-history"></i></div>
+                                    <div>
+                                        <h3 class="text-lg font-bold mb-2">Historical Perspective</h3>
+                                        <p class="text-gray-300">We leverage decades of precedent while crafting innovative solutions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-amber-50 p-12 text-center relative neon-border">
+                    <h2 class="text-3xl font-bold mb-6">Why Choose Her Majesty's Hati?</h2>
+                    <p class="text-xl mb-8 max-w-4xl mx-auto">In an era of faceless legal corporations, we maintain the personal touch of a boutique firm while delivering results that rival the largest practices. Our blend of old-world professionalism and modern legal acumen sets us apart.</p>
+                    <button class="bg-black text-white px-8 py-3 hover:bg-amber-500 hover:text-black transition-all mono text-sm tracking-wider" onclick="showPage('contact')">SCHEDULE CONSULTATION</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stories Page -->
+        <div id="stories-page" class="page-transition hidden">
+            <div class="container mx-auto px-6 py-20">
+                <div class="text-center mb-20">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Case Studies</h1>
+                    <div class="w-24 h-1 bg-amber-500 mx-auto mb-8"></div>
+                    <p class="text-xl max-w-3xl mx-auto">While confidentiality prevents us from sharing many details, these anonymized cases demonstrate our capabilities.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <div class="bg-white p-8 shadow-lg relative neon-border">
+                        <div class="text-amber-600 text-3xl mb-4"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Tech Titan Antitrust Defense</h3>
+                        <p class="text-gray-600 mb-4">Successfully defended a Silicon Valley giant against federal antitrust allegations, resulting in a favorable settlement that preserved the client's market position.</p>
+                        <p class="mono text-sm text-amber-600">// CONFIDENTIAL SETTLEMENT</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 shadow-lg relative neon-border">
+                        <div class="text-amber-600 text-3xl mb-4"><i class="fas fa-music"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Music Icon IP Protection</h3>
+                        <p class="text-gray-600 mb-4">Secured landmark copyright protections for a legendary artist's catalog, setting precedent for digital royalty distributions.</p>
+                        <p class="mono text-sm text-amber-600">// 9-FIGURE RECOVERY</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 shadow-lg relative neon-border">
+                        <div class="text-amber-600 text-3xl mb-4"><i class="fas fa-building"></i></div>
+                        <h3 class="text-xl font-bold mb-3">Real Estate Empire Succession</h3>
+                        <p class="text-gray-600 mb-4">Navigated complex international inheritance laws to preserve a family's multibillion-dollar real estate holdings across three continents.</p>
+                        <p class="mono text-sm text-amber-600">// TAX SAVINGS: $120M+</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 shadow-lg relative neon-border">
+                        <div class="text-amber-600 text-3xl mb-4"><i class="fas fa-user-shield"></i></div>
+                        <h3 class="text-xl font-bold mb-3">High-Profile Defamation Case</h3>
+                        <p class="text-gray-600 mb-4">Achieved complete vindication for a public figure in a sensitive defamation suit, with all damages awarded and public apology issued.</p>
+                        <p class="mono text-sm text-amber-600">// FULL VINDICATION</p>
+                    </div>
+                </div>
+                
+                <div class="bg-black text-white p-12 text-center relative scanline">
+                    <div class="absolute inset-0 opacity-10 bg-gradient-to-r from-amber-500 to-purple-600"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold mb-6 glow-text">Ready to Write Your Success Story?</h2>
+                        <p class="text-xl mb-8 max-w-4xl mx-auto">Every client's situation is unique. Contact us to discuss how we can apply our expertise to your specific legal challenges.</p>
+                        <button class="bg-amber-500 text-black px-8 py-3 hover:bg-white hover:text-black transition-all mono text-sm tracking-wider" onclick="showPage('contact')">CONTACT OUR TEAM</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page-transition hidden">
+            <div class="container mx-auto px-6 py-20">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+                        <div class="w-24 h-1 bg-amber-500 mb-8"></div>
+                        <p class="text-lg mb-8">Discretion is our hallmark. All inquiries are handled with the utmost confidentiality.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mr-4 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Our Offices</h3>
+                                    <p class="text-gray-600">450 Park Avenue, 15th Floor<br>New York, NY 10022</p>
+                                    <p class="text-gray-600 mt-2">1 Embarcadero Center, Suite 3000<br>San Francisco, CA 94111</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mr-4 mt-1"><i class="fas fa-phone-alt"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Phone</h3>
+                                    <p class="text-gray-600">New York: (212) 555-1984</p>
+                                    <p class="text-gray-600">San Francisco: (415) 555-1984</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-amber-600 mr-4 mt-1"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <h3 class="text-lg font-bold mb-1">Email</h3>
+                                    <p class="text-gray-600">inquiries@hermajestihati.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 bg-white p-10 shadow-lg relative neon-border">
+                        <h2 class="text-2xl font-bold mb-6">Request Consultation</h2>
+                        <form>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2 mono text-sm tracking-wider" for="name">NAME</label>
+                                <input class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-amber-500" type="text" id="name">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2 mono text-sm tracking-wider" for="email">EMAIL</label>
+                                <input class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-amber-500" type="email" id="email">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2 mono text-sm tracking-wider" for="phone">PHONE</label>
+                                <input class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-amber-500" type="tel" id="phone">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2 mono text-sm tracking-wider" for="subject">SUBJECT</label>
+                                <select class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-amber-500" id="subject">
+                                    <option>General Inquiry</option>
+                                    <option>Corporate Litigation</option>
+                                    <option>Intellectual Property</option>
+                                    <option>Discrete Counsel</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2 mono text-sm tracking-wider" for="message">MESSAGE</label>
+                                <textarea class="w-full px-4 py-2 border border-gray-300 focus:outline-none focus:border-amber-500" id="message" rows="4"></textarea>
+                            </div>
+                            <button class="bg-black text-white px-8 py-3 hover:bg-amber-500 hover:text-black transition-all mono text-sm tracking-wider w-full md:w-auto" type="submit">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12 relative scanline">
+        <div class="absolute inset-0 opacity-10 bg-gradient-to-r from-amber-500 to-purple-600"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 glow-text">HER_MAJESTI_HATI</h3>
+                    <p class="text-gray-400">Elite legal counsel blending tradition with innovation since 1984.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 mono tracking-wider">NAVIGATION</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-amber-300 transition-colors" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-amber-300 transition-colors" onclick="showPage('about')">About</a></li>
+                        <li><a href="#mission" class="text-gray-400 hover:text-amber-300 transition-colors" onclick="showPage('mission')">Our Mission</a></li>
+                        <li><a href="#stories" class="text-gray-400 hover:text-amber-300 transition-colors" onclick="showPage('stories')">Case Studies</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-amber-300 transition-colors" onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 mono tracking-wider">PRACTICE AREAS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-amber-300 transition-colors">Corporate Litigation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-300 transition-colors">Intellectual Property</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-300 transition-colors">Mergers & Acquisitions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-300 transition-colors">Discrete Counsel</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-amber-300 transition-colors">International Law</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 mono tracking-wider">CONNECT</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-amber-300 transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-amber-300 transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-amber-300 transition-colors"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="text-gray-400 mono text-sm">inquiries@hermajestihati.com</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mono text-sm mb-4 md:mb-0">© 2023 HER MAJESTI'S HATI. ALL RIGHTS RESERVED.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-amber-300 transition-colors mono text-sm">PRIVACY POLICY</a>
+                    <a href="#" class="text-gray-500 hover:text-amber-300 transition-colors mono text-sm">TERMS OF USE</a>
+                    <a href="#" class="text-gray-500 hover:text-amber-300 transition-colors mono text-sm">ATTORNEY ADVERTISING</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('[id$="-page"]').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Set home page as default
+        window.onload = function() {
+            showPage('home');
+        };
+    </script>
+</body>
+</html>
